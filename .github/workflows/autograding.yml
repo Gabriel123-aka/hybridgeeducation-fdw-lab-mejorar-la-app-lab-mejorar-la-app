@@ -1,0 +1,14 @@
+name: Autograding
+on: [push]
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Check for Image ID
+        run: grep -i "imagenUrl" index.html
