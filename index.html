@@ -3,71 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HybridgeFlix</title>
+    <title>HybridgeFlix - Entrega Final</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-6">
-    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-2xl font-bold mb-4">HybridgeFlix</h1>
-        <form id="formularioPelicula" class="mb-6">
-            <div class="mb-4">
-                <label for="titulo" class="block text-gray-700 font-bold mb-2">Título</label>
-                <input type="text" id="titulo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-6 text-blue-900 border-b pb-2">HybridgeFlix</h1>
+        
+        <form id="formularioPelicula" class="mb-8 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="titulo" class="block text-gray-700 font-bold mb-1">Título</label>
+                    <input type="text" id="titulo" class="border rounded w-full py-2 px-3 shadow-sm focus:ring-2 focus:ring-blue-400 outline-none" required>
+                </div>
+                <div>
+                    <label for="anio" class="block text-gray-700 font-bold mb-1">Año</label>
+                    <input type="number" id="anio" class="border rounded w-full py-2 px-3 shadow-sm focus:ring-2 focus:ring-blue-400 outline-none" required>
+                </div>
+                <div>
+                    <label for="calificacion" class="block text-gray-700 font-bold mb-1">Calificación (1-10)</label>
+                    <input type="number" id="calificacion" min="1" max="10" class="border rounded w-full py-2 px-3 shadow-sm focus:ring-2 focus:ring-blue-400 outline-none" required>
+                </div>
+                <div>
+                    <label for="imagenUrl" class="block text-gray-700 font-bold mb-1">URL del Póster</label>
+                    <input type="url" id="imagenUrl" class="border rounded w-full py-2 px-3 shadow-sm focus:ring-2 focus:ring-blue-400 outline-none" placeholder="https://ejemplo.com/poster.jpg" required>
+                </div>
             </div>
-            <div class="mb-4">
-                <label for="anio" class="block text-gray-700 font-bold mb-2">Año</label>
-                <input type="number" id="anio" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            <div>
+                <label for="resena" class="block text-gray-700 font-bold mb-1">Reseña</label>
+                <textarea id="resena" class="border rounded w-full py-2 px-3 shadow-sm focus:ring-2 focus:ring-blue-400 outline-none" rows="3" required></textarea>
             </div>
-            <div class="mb-4">
-                <label for="calificacion" class="block text-gray-700 font-bold mb-2">Calificación (1-10)</label>
-                <input type="number" id="calificacion" min="1" max="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-            </div>
-            <div class="mb-4">
-                <label for="resena" class="block text-gray-700 font-bold mb-2">Reseña</label>
-                <textarea id="resena" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Guardar</button>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                Guardar Película
+            </button>
         </form>
-        <table class="min-w-full bg-white">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600">Título</th>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600">Año</th>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600">Calificación</th>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600">Reseña</th>
-                </tr>
-            </thead>
-            <tbody id="cuerpoTablaPeliculas">
-                <!-- Los registros de las películas se añadirán aquí -->
-            </tbody>
-        </table>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="py-3 px-4 border-b text-left text-sm font-bold text-gray-700 uppercase">Póster</th>
+                        <th class="py-3 px-4 border-b text-left text-sm font-bold text-gray-700 uppercase">Título</th>
+                        <th class="py-3 px-4 border-b text-left text-sm font-bold text-gray-700 uppercase">Año</th>
+                        <th class="py-3 px-4 border-b text-left text-sm font-bold text-gray-700 uppercase">Calificación</th>
+                        <th class="py-3 px-4 border-b text-left text-sm font-bold text-gray-700 uppercase">Reseña</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaPeliculas" class="divide-y divide-gray-200">
+                    </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
         document.getElementById('formularioPelicula').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Obtener valores del formulario
+            // 1. Obtener valores (Programación Estructurada: paso a paso)
             const titulo = document.getElementById('titulo').value;
             const anio = document.getElementById('anio').value;
             const calificacion = document.getElementById('calificacion').value;
             const resena = document.getElementById('resena').value;
+            const imagenUrl = document.getElementById('imagenUrl').value; // Nueva variable
 
-            // Crear una nueva fila en la tabla
+            // 2. Crear nueva fila (POO: manipulando el objeto del DOM)
+            const cuerpoTabla = document.getElementById('cuerpoTablaPeliculas');
             const nuevaFila = document.createElement('tr');
+            nuevaFila.className = "hover:bg-gray-50 transition duration-150";
 
-            // Añadir celdas a la fila
+            // 3. Insertar contenido con la mejora de la imagen
+            // Se define un tamaño de imagen (w-16 h-24) para que quepa bien en la celda
             nuevaFila.innerHTML = `
-                <td class="py-2 px-4 border-b border-gray-300">${titulo}</td>
-                <td class="py-2 px-4 border-b border-gray-300">${anio}</td>
-                <td class="py-2 px-4 border-b border-gray-300">${calificacion}</td>
-                <td class="py-2 px-4 border-b border-gray-300">${resena}</td>
+                <td class="py-3 px-4">
+                    <img src="${imagenUrl}" alt="${titulo}" class="w-16 h-24 object-cover rounded shadow-md border">
+                </td>
+                <td class="py-3 px-4 font-bold text-gray-800">${titulo}</td>
+                <td class="py-3 px-4 text-gray-600">${anio}</td>
+                <td class="py-3 px-4">
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs font-bold">
+                        ⭐ ${calificacion}/10
+                    </span>
+                </td>
+                <td class="py-3 px-4 text-gray-600 text-sm italic">${resena}</td>
             `;
 
-            // Añadir la nueva fila al cuerpo de la tabla
-            document.getElementById('cuerpoTablaPeliculas').appendChild(nuevaFila);
-
-            // Limpiar el formulario
+            // 4. Añadir a la tabla y limpiar (Disciplina en la transferencia de control)
+            cuerpoTabla.appendChild(nuevaFila);
             document.getElementById('formularioPelicula').reset();
         });
     </script>
